@@ -1,9 +1,10 @@
-const express = require('express');
-const morgan = require('morgan');
-const dotenv = require('dotenv');
+const express = require("express");
+const morgan = require("morgan");
+const dotenv = require("dotenv");
+const routes = require("./routes/routes")
 
 // load env vars
-dotenv.config({ path: './config/config.env' });
+dotenv.config({ path: "./config/config.env" });
 
 const app = express();
 
@@ -11,8 +12,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(routes);
+
 // Dev logging middleware
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
     app.use(morgan('dev'));
 }
 
