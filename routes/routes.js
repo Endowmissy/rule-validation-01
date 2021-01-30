@@ -1,10 +1,10 @@
 const express = require("express");
-const details = require("../data/details")
-const successResponse = require("../helpers/responseHandler")
+const getMyDetails = require("../controller/details");
+const dataValidation = require("../controller/validation")
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    return successResponse("My Rule-Validation API", 201, details, res)
-})
+router.get("/", getMyDetails);
 
+router.post("/validate-rule", dataValidation);
+  
 module.exports = router;
