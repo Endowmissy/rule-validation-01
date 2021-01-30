@@ -12,15 +12,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Dev logging middleware
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+  }
+
 app.use(routes);
 
-// Dev logging middleware
-if (process.env.NODE_ENV === "development") {
-    app.use(morgan('dev'));
-}
+const PORT = process.env.PORT || 6000
 
-const port = process.env.PORT || 6000
-
-app.listen(port, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`)
+app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 })
