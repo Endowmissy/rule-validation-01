@@ -1,6 +1,6 @@
 const { successResponse } = require("../helpers/responseHandler");
 
-let details = {
+const details = {
     "name": "Ayomikun Emmanuel",
     "github": "@Endowmissy",
     "email": "adeolaayo311@gmail.com",
